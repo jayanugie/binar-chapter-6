@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <div class="container w-50 mt-3">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand">Users Table</a>
+        </div>
+      </nav>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(i=> { %>
+          <tr>
+            <th scope="row"><%= i.id %></th>
+            <td><%= i.username %></td>
+            <td><%= i.password %></td>
+            <td>
+              <a
+                class="text-decoration-none btn-sm btn-outline-warning"
+                href="/users/update/<%= i.id %>"
+                >Update</a
+              >
+              <a
+                class="text-decoration-none btn-sm btn-outline-danger"
+                href="/users/delete/<%= i.id %>"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+        <% }); %>
+      </table>
+      <a
+        class="text-decoration-none btn-sm btn-outline-primary"
+        href="/users/create"
+        >Add User</a
+      >
+    </div>
+
+    <div class="container w-50 mt-5">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand">Biodata Table</a>
+        </div>
+      </nav>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% biodata.forEach(i=> { %>
+          <tr>
+            <td><%= i.id_user %></td>
+            <td><%= i.name %></td>
+            <td><%= i.age %></td>
+            <td><%= i.address %></td>
+            <td>
+              <a
+                class="text-decoration-none btn-sm btn-outline-warning"
+                href="/biodata/update/<%= i.id %>"
+                >Update</a
+              >
+              <a
+                class="text-decoration-none btn-sm btn-outline-danger"
+                href="/biodata/delete/<%= i.id %>"
+                >Delete</a
+              >
+            </td>
+          </tr>
+        </tbody>
+        <% }); %>
+      </table>
+      <a
+        class="text-decoration-none btn-sm btn-outline-primary"
+        href="/biodata/create"
+        >Add Biodata</a
+      >
+    </div>
+
+    <div class="container w-50 mt-5">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">Histories Table</a>
+        </div>
+      </nav>
+      <table class="table">
+        <p class="p-3">Not available</p>
+      </table>
+    </div>
+    
+  </body>
+</html>
