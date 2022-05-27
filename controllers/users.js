@@ -2,8 +2,8 @@ const { Users, Biodata } = require('../models');
 
 
 // DASHBOARD
-function dashboard (req, res) {
-    let userData;
+function dashboard(req, res) {
+    let userData = [];
     Users.findAll({
         order: [
             ["id", "ASC"]
