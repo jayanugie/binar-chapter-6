@@ -1,9 +1,9 @@
 const { Users, Biodata } = require('../models');
 
+let userData = [];
 
 // DASHBOARD
 function dashboard(req, res) {
-    let userData = [];
     Users.findAll({
         order: [
             ["id", "ASC"]
@@ -19,8 +19,8 @@ function dashboard(req, res) {
     })
     .then(biodata => {
         res.render('dashboard.ejs', {
-            biodata: biodata,
-            users: userData
+            users: userData,
+            biodata: biodata
         });
     });
 }
@@ -32,7 +32,7 @@ function createUser(req, res) {
         username: req.body.username,
         password: req.body.password
     });
-    res.redirect('/dashboard');
+    return res.redirect('/dashboard');
 }
 
 
