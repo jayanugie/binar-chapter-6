@@ -33,8 +33,13 @@ function updateBiodata(req, res) {
         address: req.body.address
     }, {
         where: { id: req.params.id }
+    })
+    .then(() => {
+        res.redirect('/dashboard');
+    })    
+    .catch(err => {
+        res.status(404).send(`User ID doesn't exist in users table, <a href='/dashboard'>use the right one.</a>`)
     });
-    return res.redirect('/dashboard');
 }
 
 
