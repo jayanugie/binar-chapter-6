@@ -9,7 +9,12 @@ function addBiodata(req, res) {
         age: req.body.age,
         address: req.body.address
     })
-    return res.redirect('/dashboard');
+    .then(() => {
+        res.redirect('/dashboard');
+    })
+    .catch(err => {
+        res.status(404).send(`User ID doesn't exist in users table, <a href='/dashboard'>use the right one.</a>`)
+    });
 }
 
 

@@ -31,8 +31,13 @@ function createUser(req, res) {
     Users.create({
         username: req.body.username,
         password: req.body.password
+    })
+    .then(() => {
+        res.redirect('/dashboard');
+    })
+    .catch(err => {
+        res.status(404).send(`Username already has one, <a href='/dashboard'>use another name.</a>`);
     });
-    return res.redirect('/dashboard');
 }
 
 
