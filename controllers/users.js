@@ -43,7 +43,7 @@ function createUser(req, res) {
 
 // HALAMAN ADD USER
 function addUserPage(req, res) {
-    return res.render('create-users.ejs');
+    return res.render('users/create-users');
 }
 
 
@@ -54,8 +54,13 @@ function updateUser(req, res) {
         password: req.body.password
     }, {
         where: { id: req.params.id }
+    })
+    .then(() => {
+        res.redirect('/dashboard');
+    })
+    .catch(err => {
+        res.status(404).send(`Username already has one, <a href='/dashboard'>use another name.</a>`);
     });
-    return res.redirect('/dashboard');
 }
 
 
@@ -65,7 +70,7 @@ function updateUserPage(req, res) {
         where: { id: req.params.id }
     })
     .then(users => {
-        res.render('update-users.ejs', {
+        res.render('users/update-users', {
             users
         });
     });
