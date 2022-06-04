@@ -1,13 +1,13 @@
 const home = (req, res) => {
-    return res.render('index.ejs');
+    return res.render('main/index.ejs');
 }
 
 const game = (req, res) => {
-    return res.render('game.ejs');
+    return res.render('main/game.ejs');
 }
 
 const login = (req, res) => {
-    return res.render('login.ejs');
+    return res.render('main/login.ejs');
 }
 
 module.exports = {

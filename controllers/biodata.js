@@ -20,7 +20,7 @@ function addBiodata(req, res) {
 
 // HALAMAN ADD BIODATA
 function addBiodataPage(req, res) {
-    res.render('biodata/create-biodata');
+    res.render('dashboard/biodata/create-biodata');
 }
 
 
@@ -49,7 +49,7 @@ function updateBiodataPage(req, res) {
         where: { id: req.params.id }
     })
     .then(biodata => {
-        res.render('biodata/update-biodata', {
+        res.render('dashboard/biodata/update-biodata', {
             biodata
         });
     });

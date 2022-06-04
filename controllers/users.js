@@ -1,30 +1,5 @@
 const { Users, Biodata } = require('../models');
 
-let userData = [];
-
-// DASHBOARD
-function dashboard(req, res) {
-    Users.findAll({
-        order: [
-            ["id", "ASC"]
-        ]
-    }) 
-    .then(users => {
-        userData = users;
-    });
-    Biodata.findAll({
-        order: [
-            ["id_user", "ASC"]
-        ]
-    })
-    .then(biodata => {
-        res.render('dashboard.ejs', {
-            users: userData,
-            biodata: biodata
-        });
-    });
-}
-
 
 // MENAMBAH USER
 function createUser(req, res) {
@@ -43,7 +18,7 @@ function createUser(req, res) {
 
 // HALAMAN ADD USER
 function addUserPage(req, res) {
-    return res.render('users/create-users');
+    return res.render('dashboard/users/create-users.ejs');
 }
 
 
@@ -70,7 +45,7 @@ function updateUserPage(req, res) {
         where: { id: req.params.id }
     })
     .then(users => {
-        res.render('users/update-users', {
+        res.render('dashboard/users/update-users.ejs', {
             users
         });
     });
@@ -89,7 +64,6 @@ function deleteUser(req, res) {
 
 
 module.exports = {
-    dashboard,
     createUser,
     addUserPage,
     updateUser,

@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const rootController = require('../controllers/root');
-
+const main = require('../controllers/main');
+const dashboard = require('../controllers/dashboard');
 const users = require('../controllers/users');
 const biodata = require('../controllers/biodata');
 
 // DASHBOARD
-router.get('/dashboard', users.dashboard);
+router.get('/dashboard', dashboard.showDashboard);
 
 // USERS
 router.post('/users', users.createUser);
@@ -21,10 +21,10 @@ router.post('/biodata/update/:id', biodata.updateBiodata);
 router.get('/biodata/update/:id', biodata.updateBiodataPage);
 router.get('/biodata/delete/:id', biodata.deleteBiodata);
 
-// HOME AND GAME
-router.get('/', rootController.home);
-router.get('/game', rootController.game);
-router.get('/login', rootController.login);
+// MAIN
+router.get('/', main.home);
+router.get('/game', main.game);
+router.get('/login', main.login);
 
 
 module.exports = router;
